@@ -1,5 +1,4 @@
-from variables import constants
-from variables.constants import MOVIE_CATEGORIES, HOSTNAME, DB_USER, DB_PASSWD, DB_NAME
+from settings.configuration import MOVIE_CATEGORIES, HOSTNAME, DB_USER, DB_PASSWD, DB_NAME
 from utils.handling_db_tables_functions import *
 
 

@@ -1,4 +1,4 @@
-from variables.constants import *
+from settings.configuration import *
 from utils.general_db_functions import *
 
 

@@ -1,7 +1,7 @@
 import json
 
 from utils.create_table_functions import create_movies_table, create_categories_tables
-from variables.constants import *
+from settings.configuration import *
 from utils.handling_db_tables_functions import *
 
 
