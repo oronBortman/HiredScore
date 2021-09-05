@@ -1,4 +1,6 @@
 import json
+
+from utils.create_table_functions import create_movies_table, create_categories_tables
 from variables.constants import *
 from utils.handling_db_tables_functions import *
 
@@ -46,3 +48,21 @@ def import_json_to_db():
             movie_id = add_details_to_movie(data, MOVIE_DETAILS)
             for elem_category, category in MOVIE_CATEGORIES:
                 iterate_on_category(data, elem_category, category, movie_id)
+
+
+def create_db_and_import_json():
+    try:
+        globals_variables.db = create_db_connection(HOSTNAME, DB_USER, DB_PASSWD)
+        globals_variables.cursor = globals_variables.db.cursor(buffered=True)
+        drop_db(DB_NAME)
+        create_db(DB_NAME)
+        use_db(DB_NAME)
+        create_movies_table()
+        create_categories_tables()
+        import_json_to_db()
+        globals_variables.db.commit()
+    except Exception as error:
+        print(error)
+    finally:
+        globals_variables.cursor.close()
+        globals_variables.db.close()

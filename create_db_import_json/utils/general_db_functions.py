@@ -18,11 +18,20 @@ def sql_execute(query):
     globals_variables.db.commit()
 
 
-def sql_execute_ret_num(query):
+def sql_exec_ret_first_elem(query):
+    res = sql_execute_ret(query)
+    if res:
+        return res[0]
+    else:
+        return None
+
+
+def sql_execute_ret(query):
     if globals_variables.cursor:
         globals_variables.cursor.execute(query)
-        result = globals_variables.cursor.fetchone()
-        return result[0]
+        return globals_variables.cursor.fetchall()
+    else:
+        return None
 
 
 def create_db_connection(host, user, passwd):
