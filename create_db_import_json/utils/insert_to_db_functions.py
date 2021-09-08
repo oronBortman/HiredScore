@@ -14,7 +14,6 @@ def insert_movie_to_movies_table(title, release_date, movie_box_office_revenue, 
 
 def check_if_category_exists(category_table, category_val):
     query = f"SELECT EXISTS(SELECT * from {category_table} WHERE name=\"{category_val}\");"
-    print("category exists:" + str(sql_exec_ret_first_elem(query)))
     if sql_exec_ret_first_elem(query) == 1:
         return True
     else:

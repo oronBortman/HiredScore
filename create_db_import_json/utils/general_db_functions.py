@@ -14,7 +14,7 @@ def sql_execute(query):
 def sql_exec_ret_first_elem(query):
     res = sql_execute_ret(query)
     if res:
-        return res[0]
+        return res[0][0]
     else:
         return None
 
@@ -38,4 +38,4 @@ def create_db_connection(host, user, passwd):
 
 def use_db(db_name):
     query = f'USE {db_name};'
-    sql_execute(query)
+    globals_variables.cursor.execute(query)

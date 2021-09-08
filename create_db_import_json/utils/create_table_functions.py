@@ -3,7 +3,6 @@ from utils.general_db_functions import *
 
 
 def create_movies_table():
-    use_db(DB_NAME)
     query = '''
     CREATE TABLE movies (
         id BIGINT NOT NULL AUTO_INCREMENT,
@@ -23,7 +22,6 @@ def create_category_tables(singular, category_table_name):
 
 
 def create_category_table(category_table_name):
-    use_db(DB_NAME)
     query = f'''
     CREATE TABLE {category_table_name}(
         id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -48,6 +46,6 @@ def create_movies_category_table(singular, category_table_name):
 
 
 def create_categories_tables():
-    for single, plural in MOVIE_CATEGORIES:
-        create_category_tables(single, plural)
+    for singular, plural, _ in MOVIE_CATEGORIES:
+        create_category_tables(singular, plural)
 
