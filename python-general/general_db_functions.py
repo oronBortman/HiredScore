@@ -1,12 +1,9 @@
 import mysql.connector as mysql
-
-from settings.configuration import DB_NAME
 from variables import globals_variables
 
 
 def sql_execute(query):
     if globals_variables.cursor:
-        use_db(DB_NAME)
         globals_variables.cursor.execute(query)
     globals_variables.db.commit()
 

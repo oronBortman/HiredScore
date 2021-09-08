@@ -1,12 +1,19 @@
 import mysql.connector as mysql
-
-from settings.configuration import DB_NAME
 from variables import globals_variables
+
+
+def create_db(db_name):
+    query = f'CREATE DATABASE {db_name};'
+    sql_execute(query)
+
+
+def drop_db(db_name):
+    query = f'DROP DATABASE if exists {db_name};'
+    sql_execute(query)
 
 
 def sql_execute(query):
     if globals_variables.cursor:
-        use_db(DB_NAME)
         globals_variables.cursor.execute(query)
     globals_variables.db.commit()
 
